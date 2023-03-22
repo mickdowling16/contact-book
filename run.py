@@ -42,18 +42,36 @@ contacts = {
     }
 }
 
-print("\nWelcome to your contact book. Please pick an option below.")
+def welcome_message():
+    """
+    Welcome message to user to show them the options menu
+    """
+    print("Welcome to your contact book. What would you like to do?")
+    print("1. View contact")
+    print("2. Change contact")
+    print("3. Add contact")
+    print("4. Delete contact")
+    print("5. Exit")
 
-while True:
-    choice = int(input(" 1. Add new contact \n 2. Search contact \n 3. Display contact \n 4. Edit contact \n 5. Delete contact\n 6.Exit\n Enter your choice: "))
-    if choice == 1:
-        contact["name"].append(input("Please Enter Contact Name: \n"))
-        contact["phone"].append(input("Please Enter Phone Number: \n"))
-        contact["name"].append(input("Please Enter Email Address: \n"))
-        contact["name"].append(input("Please Enter Company Info: \n"))
-        print("... Contact Book Updating...\n")
+    select_choice()
 
-        contact_sheet.append_row(contact)
+
+def select_choice():
+    while True:
+            try:
+                choice = int(input("Choose[1-5]: \n"))
+            except ValueError:
+                print("Please input number.")
+                choice = 0
+            if choice == 1:
+                show_contacts()
+                welcome_message()
+            elif choice == 2:
+                print("\n==============")
+                print("Change Contact")
+                print("==============")
+                change_contact()
+                welcome_message()
 
 
 
