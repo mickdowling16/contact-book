@@ -15,11 +15,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('contact_book')
 
 contact_sheet = SHEET.worksheet('contact')
-
 data = contact_sheet.get_all_values()
-
-df = pd.DataFrame(data)
-print(df.head(10))
 
 contacts = {
     1 : {
@@ -55,8 +51,10 @@ def welcome_message():
 
     select_choice()
 
-
 def select_choice():
+    """
+    Takes user input on what choice and runs relevent function
+    """
     while True:
             try:
                 choice = int(input("Choose[1-5]: \n"))
@@ -64,6 +62,7 @@ def select_choice():
                 print("Please input number.")
                 choice = 0
             if choice == 1:
+                push_to_sheets()
                 show_contacts()
                 welcome_message()
             elif choice == 2:
@@ -71,15 +70,18 @@ def select_choice():
                 print("Change Contact")
                 print("==============")
                 change_contact()
+                push_to_sheets()
                 welcome_message()
             elif choice == 3:
                 print("\n===========")
                 print("Add Contact")
                 print("===========")
                 add_contact()
+                push_to_sheets()
                 welcome_message()
             elif choice == 4:
                 delete_contact()
+                push_to_sheets()
                 welcome_message()
                 print("4 selected")
             elif choice == 5:
@@ -88,13 +90,29 @@ def select_choice():
             else: 
                 print("Choice unavailable.")
 
+def push_to_sheets():
+    """
+    Pushes updated contacts list to Google sheets
+    """
 
+def show_contacts():
+    """
+    Print Google Sheets Values to console to show all contacts
+    """
+    df = pd.DataFrame(data)
+    print(df.head(10))
 
+def change_contact():
+    """
+    Changes existing contact on contacts list
+    """
 
-def add_contact(name, phone_no, email_address, company, worksheet):
-    print(f"Updating Contact Book...\n")
-    worksheet_to_update = SHEET.worksheet(worksheet)
-    worksheet_to_update.append_row(name, phone_no, email_address, company,)
-    print(f'{worksheet} worksheet updated successfully\n')
+def add_contact():
+    """
+    Adds new contact to dictionary
+    """
 
-add_contact(name, phone_no, email_address, company, worksheet)
+def delete_contact():
+    """
+    Deletes contact from dictionary
+    """
