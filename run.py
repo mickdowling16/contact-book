@@ -116,3 +116,5 @@ def delete_contact():
     """
     Deletes contact from dictionary
     """
+
+welcome_message()
