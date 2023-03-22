@@ -72,7 +72,21 @@ def select_choice():
                 print("==============")
                 change_contact()
                 welcome_message()
-
+            elif choice == 3:
+                print("\n===========")
+                print("Add Contact")
+                print("===========")
+                add_contact()
+                welcome_message()
+            elif choice == 4:
+                delete_contact()
+                welcome_message()
+                print("4 selected")
+            elif choice == 5:
+                print("Thank you for using contact book. Good bye!")
+                break
+            else: 
+                print("Choice unavailable.")
 
 
 
