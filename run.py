@@ -21,11 +21,25 @@ data = contact_sheet.get_all_values()
 df = pd.DataFrame(data)
 print(df.head(10))
 
-contact = {
-  "name": ["Michael Dowling", "Jenny Connolly", "Kieron Dowling"],
-  "phone": ["0851330885", "0851442889", "0452228965"],
-  "email": ["md@gmail.com", "jc@gmail.com", "kd@gmail.com"],
-  "company": ["Expert", "Hospital", "Microsoft"]
+contacts = {
+    1 : {
+        "name" : "Michael Dowling",
+        "number" : "0851330885",
+        "email" : "md@gmail.com",
+        "address" : "14 Long Mile Rd"
+    },
+    2 : {
+        "name" : "Jenny Connolly",
+        "number" : "0863830895",
+        "email" : "jc@gmail.com",
+        "address" : "16 Hill Drive Rd"
+    },
+    3 : {
+        "name" : "John Smith",
+        "number" : "0869830885",
+        "email" : "js@gmail.com",
+        "address" : "147 Johnston Avenue"
+    }
 }
 
 print("\nWelcome to your contact book. Please pick an option below.")
