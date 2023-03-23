@@ -38,6 +38,14 @@ contacts = {
     }
 }
 
+contact_info = []
+
+def update_worksheet(data, worksheet):
+    print(f"Updating {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(data)
+    print(f'{worksheet} worksheet updated successfully\n')
+
 def welcome_message():
     """
     Welcome message to user to show them the options menu
@@ -49,40 +57,31 @@ def welcome_message():
     print("4. Delete contact")
     print("5. Exit")
 
-    select_choice()
-
 def select_choice():
     """
     Takes user input on what choice and runs relevent function
     """
-    while True:
+    repeat = True
+    while repeat == True:
             try:
                 choice = int(input("Choose[1-5]: \n"))
             except ValueError:
                 print("Please input number.")
                 choice = 0
             if choice == 1:
-                push_to_sheets()
                 show_contacts()
-                welcome_message()
             elif choice == 2:
                 print("\n==============")
                 print("Change Contact")
                 print("==============")
                 change_contact()
-                push_to_sheets()
-                welcome_message()
             elif choice == 3:
                 print("\n===========")
                 print("Add Contact")
                 print("===========")
                 add_contact()
-                push_to_sheets()
-                welcome_message()
             elif choice == 4:
                 delete_contact()
-                push_to_sheets()
-                welcome_message()
                 print("4 selected")
             elif choice == 5:
                 print("Thank you for using contact book. Good bye!")
@@ -111,6 +110,17 @@ def add_contact():
     """
     Adds new contact to dictionary
     """
+    name = input("Please Enter A Name: \n")
+    phone_number = input("Please Enter A Phone Number: \n")
+    email = input("Please Enter An Email Address: \n")
+    address = input("Please Enter An Address: \n")
+
+    contact_info.extend((name, phone_number, email, address))
+
+    return contact_info
+
+    print(f"{name}'s Phone Number Added Successfully")
+    
 
 def delete_contact():
     """
@@ -118,3 +128,5 @@ def delete_contact():
     """
 
 welcome_message()
+select_choice()
+update_worksheet(contact_info, 'contact')
