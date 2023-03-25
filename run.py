@@ -23,8 +23,6 @@ def valid_name(name):
     """Adds validation to the input for contact name to check for more than 3 characters"""
     if len(name) < 3:
         return False
-    if not name.isalpha():
-        return False
     return True
 
 def valid_phone(phone):
@@ -38,14 +36,6 @@ def valid_phone(phone):
 def valid_email(email):
     """Adds validation to the input for contact email address to check for @ or . """
     if '@' not in email or '.' not in email:
-        return False
-    return True
-
-def valid_address(address):
-    """Adds validation to the input for contact address to check for more than 3 characters"""
-    if len(name) < 3:
-        return False
-    if not name.isalpha():
         return False
     return True
 
@@ -81,7 +71,7 @@ def search_contact():
     """
     Searches contact in Google sheets and returns information
     """ 
-    name = input("Enter the contact name: ")
+    name = input("Enter the contact name: ").lower()
     try:
         cell = contact_sheet.find(name)
         row = cell.row
@@ -98,7 +88,7 @@ def add_contact():
     Takes inputted contact info and pushes to Google sheet.
     """
     while True:
-        name = input("Please Enter A Name: \n")
+        name = input("Please Enter A Name: \n").lower()
         if valid_name(name):
             break
         else:
@@ -120,31 +110,30 @@ def add_contact():
     
     while True:
         address = input("Please Enter An Address: \n")
-        if valid_address(address):
-            break
-        else:
-            print("Invalid address format. Please enter more than 3 characters. Try again.")
+        break
 
     row = [name, phone, email, address]
     contact_sheet.insert_row(row, 2)
-    print(f"{name} added to contacts.")
+    print("+-+-+-+-+-+-+-+-+-+-+\n")
+    print("...Loading...")
+    print(f"{name} added to contacts\n.")
 
-def delete_contact():
-    """
-    Deletes contact from dictionary
-    """
+# def delete_contact():
+#     """
+#     Deletes contact from dictionary
+#     """
 
 while True:
     """
     Main programme loop. Takes user input and decides which function to run.
     """
-    choice = select_choice()()
+    choice = select_choice()
     if choice == 1:
         show_contacts()
     elif choice == 2:
         search_contact()
     elif choice == 3:
-        add_contacts()
+        add_contact()
     elif choice == 4:
         delete_contact()
     elif choice == 5:
