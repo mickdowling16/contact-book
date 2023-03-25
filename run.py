@@ -46,9 +46,6 @@ def select_choice():
         return select_choice()
     return choice
 
-
-
-
 def show_contacts():
     """
     Print Google Sheets Values to console to show all contacts
@@ -101,6 +98,22 @@ def delete_contact():
     """
     Deletes contact from dictionary
     """
+
+while True:
+    """
+    Main programme loop. Takes user input and decides which function to run.
+    """
+    choice = select_choice()()
+    if choice == 1:
+        show_contacts()
+    elif choice == 2:
+        search_contact()
+    elif choice == 3:
+        add_contacts()
+    elif choice == 4:
+        delete_contact()
+    elif choice == 5:
+        break
 
 welcome_message()
 select_choice()
