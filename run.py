@@ -19,12 +19,6 @@ data = contact_sheet.get_all_values()
 
 contact_info = []
 
-def update_worksheet(data, worksheet):
-    print(f"Updating {worksheet} worksheet...\n")
-    worksheet_to_update = SHEET.worksheet(worksheet)
-    worksheet_to_update.append_row(data)
-    print(f'{worksheet} worksheet updated successfully\n')
-
 def select_choice():
     """
     Welcome message to user to show them the options menu
@@ -114,7 +108,3 @@ while True:
         delete_contact()
     elif choice == 5:
         break
-
-welcome_message()
-select_choice()
-update_worksheet(contact_info, 'contact')
