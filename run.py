@@ -17,27 +17,6 @@ SHEET = GSPREAD_CLIENT.open('contact_book')
 contact_sheet = SHEET.worksheet('contact')
 data = contact_sheet.get_all_values()
 
-contacts = {
-    1 : {
-        "name" : "Michael Dowling",
-        "number" : "0851330885",
-        "email" : "md@gmail.com",
-        "address" : "14 Long Mile Rd"
-    },
-    2 : {
-        "name" : "Jenny Connolly",
-        "number" : "0863830895",
-        "email" : "jc@gmail.com",
-        "address" : "16 Hill Drive Rd"
-    },
-    3 : {
-        "name" : "John Smith",
-        "number" : "0869830885",
-        "email" : "js@gmail.com",
-        "address" : "147 Johnston Avenue"
-    }
-}
-
 contact_info = []
 
 def update_worksheet(data, worksheet):
