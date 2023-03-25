@@ -43,7 +43,7 @@ def select_choice():
     """
     Welcome message to user to show them the options menu
     """
-    print("Welcome to your contact book. What would you like to do?")
+    print("\nWelcome to your contact book. What would you like to do?")
     print("1. View contact")
     print("2. Search contact")
     print("3. Add contact")
@@ -80,6 +80,7 @@ def search_contact():
         print(f"Phone: {contact[1]}")
         print(f"Email: {contact[2]}")
         print(f"Adress: {contact[3]}")
+
     except gspread.exceptions.CellNotFound:
         print(f"{name} not found.")
 
