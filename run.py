@@ -51,6 +51,17 @@ def search_contact():
     """
     Searches contact in Google sheets and returns information
     """ 
+    name = input("Enter the contact name: ")
+    try:
+        cell = contact_sheet.find(name)
+        row = cell.row
+        contact = contact_sheet.row_values(row)
+        print(f"Name: {contact[0]}")
+        print(f"Phone: {contact[1]}")
+        print(f"Email: {contact[2]}")
+        print(f"Adress: {contact[3]}")
+    except gspread.exceptions.CellNotFound:
+        print(f"{name} not found.")
 
 def add_contact():
     """
