@@ -25,53 +25,29 @@ def update_worksheet(data, worksheet):
     worksheet_to_update.append_row(data)
     print(f'{worksheet} worksheet updated successfully\n')
 
-def welcome_message():
+def select_choice():
     """
     Welcome message to user to show them the options menu
     """
     print("Welcome to your contact book. What would you like to do?")
     print("1. View contact")
-    print("2. Change contact")
+    print("2. Search contact")
     print("3. Add contact")
     print("4. Delete contact")
     print("5. Exit")
+    choice = input("Enter choice: \n")
 
-def select_choice():
-    """
-    Takes user input on what choice and runs relevent function
-    """
-    repeat = True
-    while repeat == True:
-            try:
-                choice = int(input("Choose[1-5]: \n"))
-            except ValueError:
-                print("Please input number.")
-                choice = 0
-            if choice == 1:
-                show_contacts()
-            elif choice == 2:
-                print("\n==============")
-                print("Change Contact")
-                print("==============")
-                change_contact()
-            elif choice == 3:
-                print("\n===========")
-                print("Add Contact")
-                print("===========")
-                add_contact()
-            elif choice == 4:
-                delete_contact()
-                print("4 selected")
-            elif choice == 5:
-                print("Thank you for using contact book. Good bye!")
-                break
-            else: 
-                print("Choice unavailable.")
+    try:
+        choice = int(choice)
+        if choice not in range(1, 6):
+            raise ValueError
+    except ValueError:
+        print("Invalid choice. Please enter a number between 1 and 5.")
+        return select_choice()
+    return choice
 
-def push_to_sheets():
-    """
-    Pushes updated contacts list to Google sheets
-    """
+
+
 
 def show_contacts():
     """
@@ -80,26 +56,46 @@ def show_contacts():
     df = pd.DataFrame(data)
     print(df.head(10))
 
-def change_contact():
+def search_contact():
     """
-    Changes existing contact on contacts list
-    """
+    Searches contact in Google sheets and returns information
+    """ 
 
 def add_contact():
     """
-    Adds new contact to dictionary
+    Takes inputted contact info and pushes to Google sheet.
     """
-    name = input("Please Enter A Name: \n")
-    phone_number = input("Please Enter A Phone Number: \n")
-    email = input("Please Enter An Email Address: \n")
-    address = input("Please Enter An Address: \n")
+    while True:
+        name = input("Please Enter A Name: \n")
+        if valid_name(name):
+            break
+        else:
+            print("Invalid name format. Please enter a name longer than 3 characters. Try again.")
 
-    contact_info.extend((name, phone_number, email, address))
+    while True:
+        phone = input("Please Enter A Phone Number: \n")
+        if valid_phone(phone):
+            break
+        else:
+            print("Invalid phone format. Please enter a 10 digit phone number. Try again.")
 
-    return contact_info
-
-    print(f"{name}'s Phone Number Added Successfully")
+    while True:
+        email = input("Please Enter An Email Address: \n")
+        if valid_email(email):
+            break
+        else:
+            print("Invalid email format. Please enter email containing an @ symbol. Try again.")
     
+    while True:
+        address = input("Please Enter An Address: \n")
+        if valid_address(address):
+            break
+        else:
+            print("Invalid address format. Please enter more than 3 characters. Try again.")
+
+    row = [name, phone, email, address]
+    contact_sheet.insert_row(row, 2)
+    print(f"{name} added to contacts.")
 
 def delete_contact():
     """
