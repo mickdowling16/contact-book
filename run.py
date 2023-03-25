@@ -19,6 +19,36 @@ data = contact_sheet.get_all_values()
 
 contact_info = []
 
+def valid_name(name):
+    """Adds validation to the input for contact name to check for more than 3 characters"""
+    if len(name) < 3:
+        return False
+    if not name.isalpha():
+        return False
+    return True
+
+def valid_phone(phone):
+    """Adds validation to the input for contact phone number to check for 10 integars"""
+    if len(phone) != 10:
+        return False
+    if not phone.isnumeric():
+        return False
+    return True
+
+def valid_email(email):
+    """Adds validation to the input for contact email address to check for @ or . """
+    if '@' not in email or '.' not in email:
+        return False
+    return True
+
+def valid_address(address):
+    """Adds validation to the input for contact address to check for more than 3 characters"""
+    if len(name) < 3:
+        return False
+    if not name.isalpha():
+        return False
+    return True
+
 def select_choice():
     """
     Welcome message to user to show them the options menu
