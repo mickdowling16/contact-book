@@ -7,7 +7,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -17,27 +17,32 @@ SHEET = GSPREAD_CLIENT.open('contact_book')
 contact_sheet = SHEET.worksheet('contact')
 data = contact_sheet.get_all_values()
 
-contact_info = []
 
 def valid_name(name):
-    """Adds validation to the input for contact name to check for more than 3 characters"""
+    """Adds validation to the input for contact 
+    name to check for more than 3 characters"""
     if len(name) < 3:
         return False
     return True
 
+
 def valid_phone(phone):
-    """Adds validation to the input for contact phone number to check for 10 integars"""
+    """Adds validation to the input for contact phone 
+    number to check for 10 integars"""
     if len(phone) != 10:
         return False
     if not phone.isnumeric():
         return False
     return True
 
+
 def valid_email(email):
-    """Adds validation to the input for contact email address to check for @ or . """
+    """Adds validation to the input for contact 
+    email address to check for @ or . """
     if '@' not in email or '.' not in email:
         return False
     return True
+
 
 def select_choice():
     """
@@ -60,12 +65,14 @@ def select_choice():
         return select_choice()
     return choice
 
+
 def show_contacts():
     """
     Print Google Sheets Values to console to show all contacts
     """
     df = pd.DataFrame(data)
     print(df.head(10))
+
 
 def search_contact():
     """
@@ -84,6 +91,7 @@ def search_contact():
     except ValueError:
         print(f"{name} not found.")
 
+
 def add_contact():
     """
     Takes inputted contact info and pushes to Google sheet.
@@ -93,22 +101,22 @@ def add_contact():
         if valid_name(name):
             break
         else:
-            print("Invalid name format. Please enter a name longer than 3 characters. Try again.")
+            print("Please enter a name longer than 3")
 
     while True:
         phone = input("Please Enter A Phone Number: \n")
         if valid_phone(phone):
             break
         else:
-            print("Invalid phone format. Please enter a 10 digit phone number. Try again.")
+            print("Please enter a10 digit phone number.")
 
     while True:
         email = input("Please Enter An Email Address: \n")
         if valid_email(email):
             break
         else:
-            print("Invalid email format. Please enter email containing an @ symbol. Try again.")
-    
+            print("Please enter a valid email address")
+ 
     while True:
         address = input("Please Enter An Address: \n")
         break
@@ -119,19 +127,20 @@ def add_contact():
     print("...Loading...")
     print(f"{name} added to contacts\n.")
 
+
 def delete_contact():
     """
     Deletes contact from dictionary
     """
     name = input("Enter the name of the contact to delete: ")
-    
+
     cell = contact_sheet.find(name)
     if cell is None:
         print("Contact not found.")
         return
-    
+
     row = cell.row
-    
+
     contact_sheet.delete_rows(row)
     print("Contact deleted.")
 
