@@ -87,7 +87,7 @@ def show_contacts():
             phone = contact['Phone']
             email = contact['Email']
             address = contact['Address']
-            print(f"{name:<15} {email:<25} {phone:<20} {address:<25}")
+            print(f"{name:<15} {phone:<25} {email:<20} {address:<25}")
 
 
 def search_contact():
