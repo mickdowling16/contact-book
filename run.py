@@ -1,7 +1,5 @@
 import gspread
 from google.oauth2.service_account import Credentials
-import pandas as pd
-import numpy as np
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -19,7 +17,7 @@ data = contact_sheet.get_all_values()
 
 
 def valid_name(name):
-    """Adds validation to the input for contact 
+    """Adds validation to the input for contact
     name to check for more than 3 characters"""
     if len(name) < 3:
         return False
@@ -27,7 +25,7 @@ def valid_name(name):
 
 
 def valid_phone(phone):
-    """Adds validation to the input for contact phone 
+    """Adds validation to the input for contact phone
     number to check for 10 integars"""
     if len(phone) != 10:
         return False
@@ -37,7 +35,7 @@ def valid_phone(phone):
 
 
 def valid_email(email):
-    """Adds validation to the input for contact 
+    """Adds validation to the input for contact
     email address to check for @ or . """
     if '@' not in email or '.' not in email:
         return False
@@ -82,20 +80,20 @@ def show_contacts():
         print("No contacts found.")
     else:
         print("Contacts:")
-        print("{:<15} {:<25} {:<20} {:<25}".format("Name", "Email", "Phone", "Address"))
+        print(f"{'Name':<15} {'Phone':<25} {'Email':<20} {'Address':<25}")
         print("-" * 90)
         for contact in contacts:
             name = contact['Name']
-            email = contact['Email']
             phone = contact['Phone']
+            email = contact['Email']
             address = contact['Address']
-            print("{:<15} {:<25} {:<20} {:<25}".format(name, email, phone, address))
+            print(f"{name:<15} {email:<25} {phone:<20} {address:<25}")
 
 
 def search_contact():
     """
     Searches contact in Google sheets and returns information
-    """ 
+    """
     name = input("Enter the contact name: ").lower()
     try:
         cell = contact_sheet.find(name)
@@ -134,7 +132,7 @@ def add_contact():
             break
         else:
             print("Please enter a valid email address")
- 
+
     while True:
         address = input("Please Enter An Address: \n")
         break
@@ -161,6 +159,7 @@ def delete_contact():
 
     contact_sheet.delete_rows(row)
     print("Contact deleted.")
+
 
 while True:
     """
