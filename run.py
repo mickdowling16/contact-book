@@ -66,12 +66,30 @@ def select_choice():
     return choice
 
 
+def get_contacts():
+    """
+    Returns all values from Google Sheet
+    """
+    return contact_sheet.get_all_records()
+
+
 def show_contacts():
     """
     Print Google Sheets Values to console to show all contacts
     """
-    df = pd.DataFrame(data)
-    print(df.head(10))
+    contacts = get_contacts()
+    if len(contacts) == 0:
+        print("No contacts found.")
+    else:
+        print("Contacts:")
+        print("{:<15} {:<25} {:<20} {:<25}".format("Name", "Email", "Phone", "Address"))
+        print("-" * 90)
+        for contact in contacts:
+            name = contact['Name']
+            email = contact['Email']
+            phone = contact['Phone']
+            address = contact['Address']
+            print("{:<15} {:<25} {:<20} {:<25}".format(name, email, phone, address))
 
 
 def search_contact():
