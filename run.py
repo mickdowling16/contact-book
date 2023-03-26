@@ -81,7 +81,7 @@ def search_contact():
         print(f"Email: {contact[2]}")
         print(f"Adress: {contact[3]}")
 
-    except gspread.exceptions.CellNotFound:
+    except ValueError:
         print(f"{name} not found.")
 
 def add_contact():
@@ -119,10 +119,21 @@ def add_contact():
     print("...Loading...")
     print(f"{name} added to contacts\n.")
 
-# def delete_contact():
-#     """
-#     Deletes contact from dictionary
-#     """
+def delete_contact():
+    """
+    Deletes contact from dictionary
+    """
+    name = input("Enter the name of the contact to delete: ")
+    
+    cell = contact_sheet.find(name)
+    if cell is None:
+        print("Contact not found.")
+        return
+    
+    row = cell.row
+    
+    contact_sheet.delete_rows(row)
+    print("Contact deleted.")
 
 while True:
     """
@@ -138,4 +149,5 @@ while True:
     elif choice == 4:
         delete_contact()
     elif choice == 5:
+        print("Thank you for using Contact Book. Goodbye.")
         break
