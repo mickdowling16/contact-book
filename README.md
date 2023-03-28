@@ -1,31 +1,75 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Contact Book
 
-Welcome mickdowling16,
+For this project my objective was to create an interactive contact book application where a user can access their contacts on the go. To do this I linked my application to a Google sheet so that user input is pushed to the Google sheet and can be accessed anywhere.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+# User Stories
 
-## Reminders
+## User Goals
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+"As a user, I want to be able to fully control my contacts in an application so that I can access them from wherever I am"
 
-## Creating the Heroku app
+- To be able to access contacts easily
+- To be able to add new contacts easily
+- To be able to search for contacts
+- To be able to delete contacts 
+- To be able to access contacts from anywhere
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+# Features
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### Main Menu
+The main menu shows when a user first runs the programme. It lists 5 options and asks a user for input for what they would like to do. This menu fires again after a task has been completed so a user can choose another option or exit the programme.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+![main menu screen](/documentation/main-menu.png)
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### Show Contacts
+This shows the user their full list of contacts displayed in an easy to read formatted table, read directly from the attached Google sheet, meaning it will always be up to date.
 
-Connect your GitHub repository and deploy as normal.
+![contacts being displayed](/documentation/view-contacts.png)
 
-## Constraints
+### Add Contact
+The add contact function takes user input for name, phone number, email and address and updates the Google sheet with this information. The name input automatically changes the name to a lower case string for better search functionality.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+![add contact inputs](/documentation/add-contact.png)
 
------
-Happy coding!
+### Search Contact
+This takes user input to search the Google sheet for the name of the contact and returns the contact information to the terminal. The input is also changed to a lower case string meaning any name that matches will show up and not be case sensitive.
+
+![contact being searched and displayed](/documentation/search-contact.png)
+
+### Delete Contact
+This takes user input for a name to delete from contacts. If the name is found the corresponding contact is deleted from the Google sheet, if not an error appears to the user.
+
+![contact being deleted](/documentation/delete.png)
+
+### Exit
+This ends the loop and exits the programme.
+
+# Data Model
+The way I structured this project was to define a number of functions for the different tasks a user needed, then run a while loop for the main function of the programme. While this returned true the questions where asked to the user and input was taken to update contact book. When the exit option is picked the while loop breaks and exits the programme.
+
+I used the gspread library in python and imported my Google sheet credentials to link the Google sheet to the programme. I had also used the pandas library for certain functions but when this gave me bugs I removed it from the programme and found a different way to display info.
+
+Although a class can be used to create a contact book in python I didn't think it was needed my intended use and the way I had planned to execute this idea
+
+# Testing and Validating
+To test my python code I passed it through the PEP8 code validator and received no errors
+
+![python code validator](/documentation/python-validator.png)
+
+### Manual Testing 
+To test my project I ran the programme and inputted a number of strings and integers to test how the programme handles information and if my error messages worked as expected
+
+### Bugs
+- One bug I came across was that when I added a contact then went to view all contacts the one I had just added did not display. I fixed this by changing the method in which I showed the contacts. I was using the pandas library to show contact but after I found this bug I switched the way in which this function ran and my problem was fixed
+- Another problem I came across was when searching for a contact was that the name was case sensitive. This took me a while to figure out but was an easy fix in the end as I just converted all strings to lower case when entered, this fixed my problem
+
+### Remaining Bugs
+- No remaining bugs
+
+# Deployment
+This project was deployed using Code Institutes mock terminal for Heroku. The steps for deployment are shown below
+
+# Credits
+- I used the help of Stack Overflow to search problems and bugs I was facing with my code
+- I used w3schools for help with certain keywords and syntax
+- I used Slack to research problems and get advice from threads where people had the same problems as myself. 

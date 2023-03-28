@@ -1,11 +1,14 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from art import *
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
 ]
+
+# Google sheets links taken from love sandwiches runthrough project
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -46,6 +49,7 @@ def select_choice():
     """
     Welcome message to user to show them the options menu
     """
+    tprint("Contact Book")
     print("\nWelcome to your contact book. What would you like to do?")
     print("1. View contact")
     print("2. Search contact")
@@ -104,7 +108,7 @@ def search_contact():
         print(f"Email: {contact[2]}")
         print(f"Adress: {contact[3]}")
 
-    except ValueError:
+    except (gspread.exceptions.CellNotFound, AttributeError):
         print(f"{name} not found.")
 
 
