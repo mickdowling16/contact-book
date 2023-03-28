@@ -19,7 +19,7 @@ For this project my objective was to create an interactive contact book applicat
 ### Main Menu
 The main menu shows when a user first runs the programme. It lists 5 options and asks a user for input for what they would like to do. This menu fires again after a task has been completed so a user can choose another option or exit the programme.
 
-![main menu screen](/documentation/main-menu.png)
+![main menu screen](/documentation/main.png)
 
 ### Show Contacts
 This shows the user their full list of contacts displayed in an easy to read formatted table, read directly from the attached Google sheet, meaning it will always be up to date.
@@ -68,6 +68,16 @@ To test my project I ran the programme and inputted a number of strings and inte
 
 # Deployment
 This project was deployed using Code Institutes mock terminal for Heroku. The steps for deployment are shown below
+
+- First you need to go to Heroku.com and create new app
+- Enter an app name and select Europe as your region
+- Next go to deploy tab and then to deployment method to authorize and connect my GitHub account
+- After successful connection I selected main branch from contact-book repository 
+- Then I went to settings and the buildpacks section. I added python and nodejs buildpacks. In that order
+- Next step I went to Config Vars and added KEY "CREDS" with the value of my creds.json file in my repository
+- I also another key "PORT" with the value "8080" and saved changes
+- I then went to the deploy tab and chose automatic deployment
+- The link to my deployed site [Contact Book](https://contact-book123.herokuapp.com/)
 
 # Credits
 - I used the help of Stack Overflow to search problems and bugs I was facing with my code
