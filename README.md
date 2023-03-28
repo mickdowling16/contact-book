@@ -47,7 +47,7 @@ This ends the loop and exits the programme.
 # Data Model
 The way I structured this project was to define a number of functions for the different tasks a user needed, then run a while loop for the main function of the programme. While this returned true the questions where asked to the user and input was taken to update contact book. When the exit option is picked the while loop breaks and exits the programme.
 
-I used the gspread library in python and imported my Google sheet credentials to link the Google sheet to the programme. I had also used the pandas library for certain functions but when this gave me bugs I removed it from the programme and found a different way to display info.
+I used the gspread library in python and imported my Google sheet credentials to link the Google sheet to the programme. I had also used the pandas library for certain functions but when this gave me bugs I removed it from the programme and found a different way to display info. Later on in the development of my project I added the art library to print 'Contact Book' in large writing at the start of the main menu. I liked the look this gave my programme.
 
 Although a class can be used to create a contact book in python I didn't think it was needed my intended use and the way I had planned to execute this idea
 
