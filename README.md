@@ -49,7 +49,9 @@ The way I structured this project was to define a number of functions for the di
 
 I used the gspread library in python and imported my Google sheet credentials to link the Google sheet to the programme. I had also used the pandas library for certain functions but when this gave me bugs I removed it from the programme and found a different way to display info. Later on in the development of my project I added the art library to print 'Contact Book' in large writing at the start of the main menu. I liked the look this gave my programme.
 
-Although a class can be used to create a contact book in python I didn't think it was needed my intended use and the way I had planned to execute this idea
+Although a class can be used to create a contact book in python I didn't think it was needed my intended use and the way I had planned to execute this idea. I planned out the flow of my programme using a flow chart seen below. After each function is executed the main menu shows again until the loop is broken using the exit command. 
+
+![Flow chart](/documentation/flow-chart.png)
 
 # Testing and Validating
 To test my python code I passed it through the PEP8 code validator and received no errors
@@ -66,7 +68,9 @@ To test my project I ran the programme and inputted a number of strings and inte
 ### Remaining Bugs
 - No remaining bugs
 
-# Deployment
+# Deployment & Local Deployment
+
+## Deployment
 This project was deployed using Code Institutes mock terminal for Heroku. The steps for deployment are shown below
 
 - First you need to go to Heroku.com and create new app
@@ -79,7 +83,22 @@ This project was deployed using Code Institutes mock terminal for Heroku. The st
 - I then went to the deploy tab and chose automatic deployment
 - The link to my deployed site [Contact Book](https://contact-book123.herokuapp.com/)
 
+## Local Development
+
+### How to Fork
+1. Log in (or sign up) to Github.
+2. Go to the repository for this project, mickdowling16/contact-book
+3. Click the Fork button in the top right corner.
+
+### How to Clone
+1. Log in (or sign up) to GitHub.
+2. Go to the repository for this project, mickdowling16/contact-book
+3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
+5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
+
 # Credits
 - I used the help of Stack Overflow to search problems and bugs I was facing with my code
 - I used w3schools for help with certain keywords and syntax
 - I used Slack to research problems and get advice from threads where people had the same problems as myself. 
+- I used [Smart Draw](https://www.smartdraw.com/) for my flow chart 
