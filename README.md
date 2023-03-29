@@ -1,5 +1,7 @@
 # Contact Book
 
+## Objective
+
 For this project my objective was to create an interactive contact book application where a user can access their contacts on the go. To do this I linked my application to a Google sheet so that user input is pushed to the Google sheet and can be accessed anywhere.
 
 # User Stories
@@ -59,7 +61,7 @@ To test my python code I passed it through the PEP8 code validator and received 
 ![python code validator](/documentation/python-validator.png)
 
 ### Manual Testing 
-To test my project I ran the programme and inputted a number of strings and integers to test how the programme handles information and if my error messages worked as expected
+To test my project I ran the programme and inputted a number of strings and integers to test how the programme handles information and if my error messages worked as expected. I tested that names given were longer than 3 characters long. If not then my programme would ask to input a name value again. I checked whether my programme would detect an invalid phone number that did not contain 10 numbers. It worked correctly and any invalid number would prompt an error message and for the user to enter a correct phone number. I tested if my programme would detect an invalid email address that did not contain an @ symbol or a period. These error messages worked perfectly when tested. I also tested the search and delete functions to make sure a contact was searched correctly and not case sensitive and that when a searched name was not present an error message shows to the user. 
 
 ### Bugs
 - One bug I came across was that when I added a contact then went to view all contacts the one I had just added did not display. I fixed this by changing the method in which I showed the contacts. I was using the pandas library to show contact but after I found this bug I switched the way in which this function ran and my problem was fixed
@@ -67,6 +69,16 @@ To test my project I ran the programme and inputted a number of strings and inte
 
 ### Remaining Bugs
 - No remaining bugs
+
+### User Stories 
+
+| User Goals | Testing |
+| ----------- | ----------- |
+| To be able to access contacts easily | This Goal is achieved by having the view contacts option as the first option that appears on the main menu. This displays all contacts in a clear and easy to read format allowing users to easily access their full list of contacts |
+| To be able to add new contacts easily | Adding a new contact is very easy to do. Once the option for add contact is pressed the programme walks the user through the steps to add the contact. 4 inputs are required and then the contact is sent to the Google sheet to be accessed anywhere at any time |
+| To be able to search for contacts | Users can search for contacts by name and then all their info will be displayed. This is useful if a user has a large amount of contacts and quickly needs to find  particular person. If the contact doesn't exist then an error message shows |
+| To be able to delete contacts | A user can easily delete unwanted contacts by searching their name. If the contact exists then it will automatically be deleted. If the name is not found in contacts an error message will appear |
+| To be able to access contacts from anywhere | User contacts are pushed to an external Google sheet meaning a user can log onto their google account and access their contacts from anywhere in the world |
 
 # Deployment & Local Deployment
 
