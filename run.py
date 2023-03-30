@@ -84,7 +84,7 @@ def show_contacts():
         print("No contacts found.")
     else:
         print("Contacts:")
-        print(f"{'Name':<15} {'Phone':<25} {'Email':<20} {'Address':<25}")
+        print(f"{'Name':<15} {'Phone':<15} {'Email':<20} {'Address':<35}")
         print("-" * 90)
         for contact in contacts:
             name = contact['Name']
